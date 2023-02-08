@@ -33,6 +33,28 @@ def show_movie(movie_id):
 
     return render_template('movie_details.html', movie = movie)
 
+@app.route('/movies/<movie_id>/rating', methods=['POST'])
+def rate_movie(movie_id):
+    '''Rate a movie'''
+    logged_in = session.get('user_email')
+    rating = request.form.get('rating')
+
+    if logged_in is None:
+        flash('You need to log in before you can rate!')
+    elif not rating:
+        flash('You must select a rating!')
+    else:
+        user = crud.get_user_by_email(logged_in)
+        movie = crud.get_movie_by_id(movie_id)
+
+        rated = crud.create_rating(user, movie, int(rating))
+        db.session.add(rated)
+        db.session.commit()
+
+        flash(f'You have rated this movie {rating}!')
+        
+    return redirect(f'/movies/{movie_id}') 
+
 @app.route('/users')
 def all_users():
     '''View all users'''
@@ -41,6 +63,7 @@ def all_users():
 
     return render_template('all_users.html', users = users)
 
+
 @app.route('/users/<user_id>')
 def show_user(user_id):
     '''Show user with particular ID'''
@@ -48,6 +71,41 @@ def show_user(user_id):
     user = crud.get_user_by_id(user_id)
 
     return render_template('user_details.html', user = user)
+
+@app.route('/users', methods=['POST'])
+def register_user():
+    '''Create a new user'''
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+
+    if user:
+        flash('Sorry, that email already exists. Try another.')
+    else:
+        user = crud.create_user(email, password)
+        db.session.add(user)
+        db.session.commit()
+        flash('Account created successfully! You can now log in!')
+    return redirect('/')
+
+
+@app.route('/login', methods=['POST'])
+def login():
+    '''User Login'''
+    email = request.form.get('email')
+    password = request.form.get('password')
+
+    user = crud.get_user_by_email(email)
+    
+    if not user or password != password:
+        flash('Incorrect email or password, please try again!')
+    else:
+        session['user_email'] = user.email
+        flash(f'Welcome back, { user.email }')
+    
+    return redirect('/')
+
 
 
 
