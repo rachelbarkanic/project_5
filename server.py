@@ -1,8 +1,7 @@
 """Server for movie ratings app."""
 
 from flask import Flask, render_template, request, flash, session, redirect
-from model import connect_to_db, db
-import crud
+from model import connect_to_db, db, User, Movie, Rating
 
 from jinja2 import StrictUndefined
 
@@ -21,7 +20,7 @@ def homepage():
 def all_movies():
     '''View all movies'''
 
-    movies = crud.get_movies()
+    movies = Movie.get_movies()
 
     return render_template('all_movies.html', movies = movies)
 
@@ -29,7 +28,7 @@ def all_movies():
 def show_movie(movie_id):
     '''Show movie with particular ID'''
 
-    movie = crud.get_movie_by_id(movie_id)
+    movie = Movie.get_movie_by_id(movie_id)
 
     return render_template('movie_details.html', movie = movie)
 
@@ -44,22 +43,22 @@ def rate_movie(movie_id):
     elif not rating:
         flash('You must select a rating!')
     else:
-        user = crud.get_user_by_email(logged_in)
-        movie = crud.get_movie_by_id(movie_id)
+        user = User.get_user_by_email(logged_in)
+        movie = Movie.get_movie_by_id(movie_id)
 
-        rated = crud.create_rating(user, movie, int(rating))
+        rated = Rating.create_rating(user, movie, int(rating))
         db.session.add(rated)
         db.session.commit()
 
         flash(f'You have rated this movie {rating}!')
-        
+
     return redirect(f'/movies/{movie_id}') 
 
 @app.route('/users')
 def all_users():
     '''View all users'''
 
-    users = crud.get_users()
+    users = User.get_users()
 
     return render_template('all_users.html', users = users)
 
@@ -68,7 +67,7 @@ def all_users():
 def show_user(user_id):
     '''Show user with particular ID'''
 
-    user = crud.get_user_by_id(user_id)
+    user = User.get_user_by_id(user_id)
 
     return render_template('user_details.html', user = user)
 
@@ -78,12 +77,12 @@ def register_user():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    user = crud.get_user_by_email(email)
+    user = User.get_user_by_email(email)
 
     if user:
         flash('Sorry, that email already exists. Try another.')
     else:
-        user = crud.create_user(email, password)
+        user = User.create_user(email, password)
         db.session.add(user)
         db.session.commit()
         flash('Account created successfully! You can now log in!')
@@ -96,7 +95,7 @@ def login():
     email = request.form.get('email')
     password = request.form.get('password')
 
-    user = crud.get_user_by_email(email)
+    user = User.get_user_by_email(email)
     
     if not user or password != password:
         flash('Incorrect email or password, please try again!')

@@ -18,6 +18,22 @@ class User(db.Model):
 
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email}>"
+    
+    @classmethod
+    def create_user(cls, email, password):
+        return cls(email = email, password = password)
+    
+    @classmethod
+    def get_users(cls):
+        return cls.query.all()
+    
+    @classmethod
+    def get_user_by_id(cls, user_id):
+        return cls.query.get(user_id)
+    
+    @classmethod
+    def get_user_by_email(cls, email):
+        return cls.query.filter(User.email == email).first()
 
 
 
@@ -37,6 +53,27 @@ class Movie(db.Model):
 
     def __repr__(self):
         return f"<Movie movie_id={self.movie_id} title={self.title}>"
+    
+    @classmethod
+    def create_movie(cls, title, overview, release_date, poster_path):
+        '''Create and return a new movie'''
+
+        return cls(
+        title = title, 
+        overview = overview, 
+        release_date = release_date, 
+        poster_path = poster_path
+        )
+    
+    @classmethod
+    def get_movies(cls):
+
+        return cls.query.all()
+
+    @classmethod
+    def get_movie_by_id(cls, movie_id):
+
+        return cls.query.get(movie_id)
 
 
 
@@ -57,6 +94,11 @@ class Rating(db.Model):
 
     def __repr__(self):
         return f"<Rating rating_id={self.rating_id} score={self.score}>"
+    
+    @classmethod
+    def create_rating(cls, user, movie, score):
+
+        return cls(user = user, movie = movie, score = score)
 
 
 

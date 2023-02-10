@@ -5,7 +5,7 @@
 {% block body %}
 
 {% for movie in movies %}
-<li>
+<li id="movie-list">
     <a href="/movies/{{ movie.movie_id }}">
         {{ movie.title }}
     </a>

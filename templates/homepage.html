@@ -4,14 +4,10 @@
 
 {% block body %}
     <h1>Welcome!</h1>
-    <h2>Navigation</h2>
-    <ul>
-        <li><a href="/movies"> View All Movies</a></li>
-        <li><a href="/users"> View All Users</a></li>
-        
-    </ul>
+
 
 <h2> Create an Account </h2>
+<div id="account-form">
 <form action="/users" method="POST">
     <p>
         Email <input type="text" name="email">
@@ -25,8 +21,10 @@
         <input type="submit">
     </p>
 </form>
+</div>
 
 <h2> Log In </h2>
+<div id="login-form">
 <form action="/login" method="POST">
     <p> Email <input type="text" name="email">
     </p>
@@ -37,5 +35,6 @@
     <input type="submit">
     </p>
 </form>
+</div>
 
 {% endblock %}
