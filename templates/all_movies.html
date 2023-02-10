@@ -4,12 +4,17 @@
 
 {% block body %}
 
+<div id="movie-list">
 {% for movie in movies %}
-<li id="movie-list">
-    <a href="/movies/{{ movie.movie_id }}">
+<div class="card text-center" id="movie-div">
+    <img id="movie-img" src="{{ movie.poster_path }}">
+    <h5><a href="/movies/{{ movie.movie_id }}">
         {{ movie.title }}
     </a>
-</li>
+</h5>
+</div>
 {% endfor %}
+</div>
+
 
 {% endblock %}

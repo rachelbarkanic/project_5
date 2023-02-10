@@ -26,3 +26,27 @@ a {
 a:hover {
     color: hotpink;
 }
+
+#movie-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#movie-img {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+}
+
+#movie-div {
+
+    border: 2px;
+    border-color: black;
+    padding: 10px 10px 10px 10px;
+    background-color: none;
+}
+
+li {
+    display: flex;
+    flex-wrap: wrap;
+}
