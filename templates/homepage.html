@@ -3,9 +3,10 @@
 {% block title %} Movie Ratings Home {% endblock %}
 
 {% block body %}
+
+<div id="form-container">
     <h1>Welcome!</h1>
-
-
+<br><br>
 <h2> Create an Account </h2>
 <div id="account-form">
 <form action="/users" method="POST">
@@ -18,11 +19,11 @@
     </p>
 
     <p>
-        <input type="submit">
+        <input class="btn btn-primary" type="submit">
     </p>
 </form>
 </div>
-
+<br><br>
 <h2> Log In </h2>
 <div id="login-form">
 <form action="/login" method="POST">
@@ -32,9 +33,10 @@
         Password <input type="password" name="password">
     </p>
     <p>
-    <input type="submit">
+    <input class="btn btn-primary" type="submit">
     </p>
 </form>
 </div>
+
 
 {% endblock %}

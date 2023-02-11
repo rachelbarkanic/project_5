@@ -1,6 +1,6 @@
 """Server for movie ratings app."""
 
-from flask import Flask, render_template, request, flash, session, redirect
+from flask import Flask, render_template, request, flash, session, redirect, url_for
 from model import connect_to_db, db, User, Movie, Rating
 
 from jinja2 import StrictUndefined
@@ -40,6 +40,7 @@ def rate_movie(movie_id):
 
     if logged_in is None:
         flash('You need to log in before you can rate!')
+        return redirect(url_for('homepage'))
     elif not rating:
         flash('You must select a rating!')
     else:
@@ -101,7 +102,7 @@ def login():
         flash('Incorrect email or password, please try again!')
     else:
         session['user_email'] = user.email
-        flash(f'Welcome back, { user.email }')
+        flash(f'Welcome back, { user.email }! You may now rate movies!')
     
     return redirect('/')
 

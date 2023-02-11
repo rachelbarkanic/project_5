@@ -3,6 +3,8 @@
 {% block title %} {{ user.email }} - Personal Page {% endblock %}
 
 {% block body %}
+<div class="user-div">
 <h1>{{ user.email }}</h1>
-
+<h2>Your User ID is: {{ user.user_id }}</h2>
+</div>
 {% endblock %}

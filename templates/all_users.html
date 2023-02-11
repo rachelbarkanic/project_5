@@ -4,12 +4,16 @@
 
 {% block body %}
 
+<div class="user-div">
+    <h1>Click a User to See ID</h1>
 {% for user in users %}
-<li>
+<br>
     <a href="/users/{{ user.user_id }}">
         {{ user.email }}
     </a>
-</li>
+
+<br>
 {% endfor %}
+</div>
 
 {% endblock %}
