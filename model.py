@@ -34,6 +34,7 @@ class User(db.Model):
     @classmethod
     def get_user_by_email(cls, email):
         return cls.query.filter(User.email == email).first()
+    
 
 
 
@@ -99,6 +100,12 @@ class Rating(db.Model):
     def create_rating(cls, user, movie, score):
 
         return cls(user = user, movie = movie, score = score)
+    
+    @classmethod
+    def update(cls, rating_id, new_score):
+        """ Update a rating given rating_id and the updated score. """
+        rating = cls.query.get(rating_id)
+        rating.score = new_score
 
 
 

@@ -32,28 +32,6 @@ def show_movie(movie_id):
 
     return render_template('movie_details.html', movie = movie)
 
-@app.route('/movies/<movie_id>/rating', methods=['POST'])
-def rate_movie(movie_id):
-    '''Rate a movie'''
-    logged_in = session.get('user_email')
-    rating = request.form.get('rating')
-
-    if logged_in is None:
-        flash('You need to log in before you can rate!')
-        return redirect(url_for('homepage'))
-    elif not rating:
-        flash('You must select a rating!')
-    else:
-        user = User.get_user_by_email(logged_in)
-        movie = Movie.get_movie_by_id(movie_id)
-
-        rated = Rating.create_rating(user, movie, int(rating))
-        db.session.add(rated)
-        db.session.commit()
-
-        flash(f'You have rated this movie {rating}!')
-
-    return redirect(f'/movies/{movie_id}') 
 
 @app.route('/users')
 def all_users():
@@ -106,7 +84,43 @@ def login():
     
     return redirect('/')
 
+@app.route('/movies/<movie_id>/rating', methods=['POST'])
+def rate_movie(movie_id):
+    '''Rate a movie'''
+    logged_in = session.get('user_email')
+    rating = request.form.get('rating')
 
+    if logged_in is None:
+        flash('You need to log in before you can rate!')
+        return redirect(url_for('homepage'))
+    elif not rating:
+        flash('You must select a rating!')
+    else:
+        user = User.get_user_by_email(logged_in)
+        movie = Movie.get_movie_by_id(movie_id)
+
+        rated = Rating.create_rating(user, movie, int(rating))
+        db.session.add(rated)
+        db.session.commit()
+
+        flash(f'You have rated this movie {rating}!') 
+
+    return redirect(f'/movies/{movie_id}') 
+
+
+@app.route("/update_rating", methods=["POST"])
+def update_rating():
+    rating_id = request.json["rating_id"]
+    updated_score = request.json["updated_score"]
+
+    if int(updated_score) not in range(6):
+        return 'Rating Must Be 0-5'
+    else:
+        Rating.update(rating_id, updated_score)
+        db.session.commit()
+
+        return "Success"
+    
 
 
 if __name__ == "__main__":

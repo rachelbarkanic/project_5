@@ -14,7 +14,7 @@ img {
 }
 
 body {
-    background-image: url('https://lh3.googleusercontent.com/o43ZSvy5Fizs4IQQKN8_E9VRFaZeDr2f2hmabiFI3VqvDfLBY0_v1AhUY9YMZEqwonla2YBmeUy4z_YOs3aWlnaW70dG3fpa0zC2i7V9E_NDbaVo5HH2w9k0nyiho4fpO9Dm3js52b1c8TLkY2OAmgBlaEMe5-Xd6dBWUrUfAh51gag007U2Ztce8rJ-Ss8gVtebpnYCwPixcRVlGV76Wbgs7FwRq16LvUQGPunpuJJElMlR_-l5nrvsCBAYoKCwZPl9i5_iLUBChqzm1bErY-J30R5cTxygsLrr3wZ6CEl0dTBSQSjOOtanqCsQ_sAU4sIzQTkvyhtGVOniRDpTVjjZ1kERMr5PTibzV7bX1uTDDUGkjEQboqWDJ7v91zNSdIfgxhVX5SzgzyaeDrtRdEh3t4l6MsYUyuCG_pM84VbE0b40J3eTc__SW36rvdnF-1K9bxmkdYzXEyHdsgSSeWpmJlCC7XRPqpbMttoLAucg3m4hhy9efQhDMcEmfIKezzQ-0717z1Yb-VAoll9kht7iFiVM25-X1cE3VIJP6h3ZojmswuHwVkdXfRE9HBpp8cIdDMucqeSGsw7sS9-wbJZDWyKDcj2SdjZd-Lxsbky2B_QFLfUNduGme3vadguDvdDFT5Abc_SEWR8_8JehKBff6j4ICWvyJDU5KH3f1Ekm5Uu98eVpxVw12A0gSGTgYGk8J2qODrpNRHgNfVeM_ZJjKT9d1zQ0Lquh58wBWpNaNRtwiO_kfK8x66fvvlGGh9rN1HEFMdJBsMtzsRsqCXPPkrWsnUTsflUZyH9OyUOnthV5mGxfK5CaGUzVUt25b5jPf9-T0sJ9i_L42hIHATsQyI5O_rFlefMNZz7_8iB-eyCV81iMvMI_o85Dt5OzoAZ1N-XG8ulRz-HuOMyO8XgVuK5aXzjrh-c5=w2128-h1418-s-no?authuser=0');
+    background-image: url('https://lh3.googleusercontent.com/ty1xlqzCZScdXiIcbNBJWjAM4mgvCFAGp6u-80xRpiWU6EPhgf5Gbn8y-YND8I7dB9HKoOE1rcM8mrqYDslZFluSWpnoXSY7ZrQSxYF0hqyzBLUK0hxtP1qyfr8Ib7Mo6AY03uvAcJpIK8ofuJaGyhUmoEnSgS5OIDaFs45EneF1i7-E7VIoUsMc4Vy58IZO7dHfkJ0A0dkY4D4aN_UJq03rYHmc4ree9D-RyBA13DZe6B7lYOdzmzBuk32DV8sWLb91kuN5ksr-OzRthlEpa_AiunC_vRiGoFeRiXRHDnub2CfU5Zc-yGcE-n8xasDGb9x3ZZ-uo878JcIzr8K5bWpJ7pCJnW68eYvFeAitHKQP91aMrxf6p-MqjiN8kE8KZedzJMyXJgaNNF9u_AuJVh_Mkhs9RF8wP-R-DmhIEfaF97FbxL4QKjTygTqKR8Hyc8WN1zueGHYhkV47doGSRiA6KmTwcb8nTV9NrTfySywxLd2gyOZJrovqvETxEoTAajHTqSJka8jlsdjI-kKXMmjfM59Z7uOA3MS7YJUjzOphiun4Fa_rFhTCd0L_JUoaIFqbCfPM8TEls3jRANDQZJBBwdo4MCJqLHOaKf0PSLOobglkxsFyvPilkkxtv0UvfJIEV6dylkk-SHkPSCBquN3VoOXQm1HZTv1Ku2APSTh2u1U06hJqxj-UgYMf_xxCqrSbYIjNZlE1J9pzd6sO5Co6whpbmpnZQOAhB22FduFWApXsJJBqiZMuQctdMopGRPCXE9vYxrKt4-zmy7ohV8HzAHkjkBn12_Dv6Y6cXAC9cFbmNoAe1uVjAGfI5ept2U-sN8q0ThvEcTapDM0dEJ-69C3CAWYQ1MPqgn9HC9xwgY24buI_Lqiknk-0vUjs9Fz5ozxOC-lGvwKvFSfk6ur9PQPjVf5yc8Ri=w2250-h1500-s-no?authuser=0');
     background-size: 100%;
     font-family: 'Times New Roman', Times, serif;
     color: hotpink;
@@ -69,6 +69,7 @@ li {
     justify-content: space-around;
     text-align: center;
     font-size: 30px;
+    
 }
 
 #form-container {
@@ -76,4 +77,9 @@ li {
     justify-content: space-around;
     text-align: center;
     font-size: 30px;
+}
+
+.user-img {
+    height: 100px;
+    width: 100px;
 }
